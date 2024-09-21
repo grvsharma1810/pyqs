@@ -97,58 +97,57 @@ function App() {
       height="100vh"
       alignItems="center"
       justifyContent="center"
+      overflow="auto"
     >
-      <Box width="80%">
-        <form>
-          <Stack rowGap={10}>
-            <Text fontSize="3xl">
-              {currentQuestion + 1}. {pyqs[currentQuestion].Question}
+      <Box as="form" width="80%" height="100%" paddingY={10}>
+        <Stack rowGap={10}>
+          <Text fontSize="3xl">
+            {currentQuestion + 1}. {pyqs[currentQuestion].Question}
+          </Text>
+
+          <Stack>
+            <Text fontSize="md" fontWeight={800}>
+              Syllabus
             </Text>
-
-            <Stack>
-              <Text fontSize="md" fontWeight={800}>
-                Syllabus
-              </Text>
-              <Input
-                placeholder="Syllabus"
-                size="lg"
-                value={syllabus}
-                onChange={handleSyllabusChange}
-              />
-            </Stack>
-
-            <Stack>
-              <Text fontSize="md" fontWeight={800}>
-                Topic
-              </Text>
-              <Textarea
-                placeholder="Syllabus"
-                size="lg"
-                value={topic}
-                onChange={handleTopicChange}
-              />
-            </Stack>
-
-            <Box display="flex" justifyContent="flex-end" columnGap={5}>
-              <Button size="lg" onClick={handlePrevious}>
-                Previous
-              </Button>
-              <Button size="lg" onClick={handleNext}>
-                Next
-              </Button>
-              <Button
-                size="lg"
-                variant="solid"
-                colorScheme="teal"
-                onClick={handleSave}
-                isLoading={isSaving}
-                isDisabled={isSaved}
-              >
-                Save
-              </Button>
-            </Box>
+            <Input
+              placeholder="Syllabus"
+              size="lg"
+              value={syllabus}
+              onChange={handleSyllabusChange}
+            />
           </Stack>
-        </form>
+
+          <Stack>
+            <Text fontSize="md" fontWeight={800}>
+              Topic
+            </Text>
+            <Textarea
+              placeholder="Syllabus"
+              size="lg"
+              value={topic}
+              onChange={handleTopicChange}
+            />
+          </Stack>
+
+          <Box display="flex" justifyContent="flex-end" columnGap={5}>
+            <Button size="lg" onClick={handlePrevious}>
+              Previous
+            </Button>
+            <Button size="lg" onClick={handleNext}>
+              Next
+            </Button>
+            <Button
+              size="lg"
+              variant="solid"
+              colorScheme="teal"
+              onClick={handleSave}
+              isLoading={isSaving}
+              isDisabled={isSaved}
+            >
+              Save
+            </Button>
+          </Box>
+        </Stack>
       </Box>
     </Box>
   );
