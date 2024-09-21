@@ -20,17 +20,17 @@ function App() {
   const [syllabus, setSyllabus] = useState("");
   const [topic, setTopic] = useState("");
 
-  const [isSaved, setIsSaved] = useState(true);
+  const [isDirty, setIsDirty] = useState(false);
   const [isSaving, setIsSaving] = useState(false);
 
   const handleSyllabusChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     setSyllabus(event.target.value);
-    setIsSaved(false);
+    setIsDirty(true);
   };
 
   const handleTopicChange = (event: React.ChangeEvent<HTMLTextAreaElement>) => {
     setTopic(event.target.value);
-    setIsSaved(false);
+    setIsDirty(true);
   };
 
   const readFile = async () => {
@@ -73,7 +73,7 @@ function App() {
     await writable.write(contents);
     await writable.close();
     setIsSaving(false);
-    setIsSaved(true);
+    setIsDirty(true);
   };
 
   if (!fileHandle || pyqs.length === 0) {
@@ -142,7 +142,7 @@ function App() {
               colorScheme="teal"
               onClick={handleSave}
               isLoading={isSaving}
-              isDisabled={isSaved}
+              isDisabled={!isDirty}
             >
               Save
             </Button>
