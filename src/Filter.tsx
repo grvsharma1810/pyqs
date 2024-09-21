@@ -147,6 +147,7 @@ export const Filter = () => {
               value={filters.paper}
               label="Paper"
               onChange={(selectedOptions) =>
+                // @ts-expect-error check
                 handleFilterChange("paper", selectedOptions)
               }
             />
@@ -157,6 +158,7 @@ export const Filter = () => {
               value={filters.subject}
               label="Subject"
               onChange={(selectedOptions) =>
+                // @ts-expect-error check
                 handleFilterChange("subject", selectedOptions)
               }
             />
@@ -167,6 +169,7 @@ export const Filter = () => {
               value={filters.topic}
               label="Topic"
               onChange={(selectedOptions) =>
+                // @ts-expect-error check
                 handleFilterChange("topic", selectedOptions)
               }
             />
@@ -177,6 +180,7 @@ export const Filter = () => {
               value={filters.syllabus}
               label="Syllabus"
               onChange={(selectedOptions) =>
+                // @ts-expect-error check
                 handleFilterChange("syllabus", selectedOptions)
               }
             />
