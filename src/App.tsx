@@ -46,16 +46,19 @@ function App() {
 
   const handleNext = () => {
     if (currentQuestion < pyqs.length - 1) {
-      setCurrentQuestion((prev) => prev + 1);
-      setSyllabus(pyqs[currentQuestion].Syllabus);
-      setTopic(pyqs[currentQuestion].Topic.join(", "));
+      const nextQuestion = currentQuestion + 1;
+      setCurrentQuestion(nextQuestion);
+      setSyllabus(pyqs[nextQuestion].Syllabus);
+      setTopic(pyqs[nextQuestion].Topic.join(", "));
     }
   };
+
   const handlePrevious = () => {
     if (currentQuestion > 0) {
-      setCurrentQuestion((prev) => prev - 1);
-      setSyllabus(pyqs[currentQuestion].Syllabus);
-      setTopic(pyqs[currentQuestion].Topic.join(", "));
+      const prevQuestion = currentQuestion - 1;
+      setCurrentQuestion(prevQuestion);
+      setSyllabus(pyqs[prevQuestion].Syllabus);
+      setTopic(pyqs[prevQuestion].Topic.join(", "));
     }
   };
 
