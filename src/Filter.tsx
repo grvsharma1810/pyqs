@@ -1,20 +1,15 @@
-import {
-  Box,
-  Button,
-  Table,
-  Thead,
-  Tbody,
-  Tr,
-  Th,
-  Td,
-  TableCaption,
-  TableContainer,
-  Grid,
-  GridItem,
-} from "@chakra-ui/react";
+import { Box, Button, Grid, GridItem } from "@chakra-ui/react";
 import { useMemo, useState } from "react";
 import { PYQ } from "./types";
 import { MultiSelect, Option } from "chakra-multiselect";
+import { PyqsTable } from "./PyqsTable";
+import { createTheme, CssBaseline, ThemeProvider } from "@mui/material";
+
+const theme = createTheme({
+  palette: {
+    mode: "dark",
+  },
+});
 
 const getFilterOptions = (pyqs: Array<PYQ>) => {
   const paperOptions = Array.from(new Set(pyqs.map((pyq) => pyq.Paper))).map(
@@ -139,7 +134,7 @@ export const Filter = () => {
 
   return (
     <Box p={5} position="relative">
-      <Box borderRadius={10} backgroundColor="gray.900" p={4} mb={5}>
+      <Box borderRadius={10} backgroundColor="blackAlpha.600" p={4} mb={5}>
         <Grid templateColumns="repeat(2, 1fr)" gap={2}>
           <GridItem w="100%">
             <MultiSelect
@@ -187,35 +182,10 @@ export const Filter = () => {
           </GridItem>
         </Grid>
       </Box>
-      <TableContainer>
-        <Table variant="striped" colorScheme="gray">
-          <TableCaption>End of results</TableCaption>
-          <Thead>
-            <Tr>
-              <Th>Paper</Th>
-              <Th>Subject</Th>
-              <Th isNumeric>Year</Th>
-              <Th isNumeric>Marks</Th>
-              <Th>Topic</Th>
-              <Th>Syllabus</Th>
-              <Th>Question</Th>
-            </Tr>
-          </Thead>
-          <Tbody>
-            {filteredPyqs.map((pyq) => (
-              <Tr key={pyq.id}>
-                <Td>{pyq.Paper}</Td>
-                <Td>{pyq.Subject}</Td>
-                <Td isNumeric>{pyq.Year}</Td>
-                <Td isNumeric>{pyq.Marks}</Td>
-                <Td>{pyq.Topic.join(", ")}</Td>
-                <Td>{pyq.Syllabus}</Td>
-                <Td>{pyq.Question}</Td>
-              </Tr>
-            ))}
-          </Tbody>
-        </Table>
-      </TableContainer>
+      <ThemeProvider theme={theme}>
+        <CssBaseline />
+        <PyqsTable pyq={filteredPyqs} />
+      </ThemeProvider>
     </Box>
   );
 };
