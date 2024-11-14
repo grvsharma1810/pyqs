@@ -18,13 +18,13 @@ const getTableRows = (data?: PYQ[]): GridRowsProp => {
 };
 
 const columns: GridColDef[] = [
-  { field: "paper", headerName: "Paper", width: 80 },
-  { field: "subject", headerName: "Subject", width: 150 },
   { field: "year", headerName: "Year", width: 100 },
   { field: "question", headerName: "Question", width: 500 },
-  { field: "topics", headerName: "Topics", width: 150 },
+  { field: "paper", headerName: "Paper", width: 80 },
+  { field: "subject", headerName: "Subject", width: 150 },
   { field: "marks", headerName: "Marks", width: 70 },
-  { field: "syllabus", headerName: "Syllabus", width: 350 },
+  { field: "topics", headerName: "Topics", width: 200 },
+  { field: "syllabus", headerName: "Syllabus", width: 500 },
 ];
 
 export const PyqsTable = ({ pyq }: { pyq: PYQ[] }) => {
