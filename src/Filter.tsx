@@ -1,4 +1,4 @@
-import { Box, Button, Grid, GridItem } from "@chakra-ui/react";
+import { Box, Grid, GridItem } from "@chakra-ui/react";
 import { useMemo, useState } from "react";
 import { PYQ } from "./types";
 import { MultiSelect, Option } from "chakra-multiselect";
@@ -50,7 +50,7 @@ const getFilterOptions = (pyqs: Array<PYQ>) => {
 };
 console.log(pyq_json)
 export const Filter = () => {
-  const [pyqs, setPyqs] = useState<Array<PYQ>>(pyq_json);
+  const [pyqs] = useState<Array<PYQ>>(pyq_json);
 
 
   const [filters, setFilters] = useState<{
