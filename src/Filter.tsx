@@ -4,6 +4,7 @@ import { PYQ } from "./types";
 import { MultiSelect, Option } from "chakra-multiselect";
 import { PyqsTable } from "./PyqsTable";
 import { createTheme, CssBaseline, ThemeProvider } from "@mui/material";
+import pyq_json from "./pyqs_4.json"
 
 const theme = createTheme({
   palette: {
@@ -47,9 +48,10 @@ const getFilterOptions = (pyqs: Array<PYQ>) => {
     syllabus: syllabusOptions,
   };
 };
-
+console.log(pyq_json)
 export const Filter = () => {
-  const [pyqs, setPyqs] = useState<Array<PYQ>>([]);
+  const [pyqs, setPyqs] = useState<Array<PYQ>>(pyq_json);
+
 
   const [filters, setFilters] = useState<{
     paper: Array<Option>;
@@ -75,13 +77,13 @@ export const Filter = () => {
     }));
   };
 
-  const readFile = async () => {
-    // @ts-expect-error check
-    const [fileHandle] = await window.showOpenFilePicker();
-    const file = await fileHandle.getFile();
-    const pvqs = JSON.parse(await file.text());
-    setPyqs(pvqs);
-  };
+  // const readFile = async () => {
+  //   const [fileHandle] = await window.showOpenFilePicker();
+  //   const file = await fileHandle.getFile();
+  //   const file = readFileSync('./assets/pyqs_4.json', 'utf-8');
+  //   const pvqs = JSON.parse(await file.text());
+  //   setPyqs(pvqs);
+  // };
 
   const filteredPyqs = pyqs.filter((pyq) => {
     if (
@@ -117,20 +119,20 @@ export const Filter = () => {
     return true;
   });
 
-  if (pyqs.length === 0) {
-    return (
-      <Box
-        display="flex"
-        height="100vh"
-        alignItems="center"
-        justifyContent="center"
-      >
-        <Button size="lg" colorScheme="teal" onClick={readFile}>
-          Select File
-        </Button>
-      </Box>
-    );
-  }
+  // if (pyqs.length === 0) {
+  //   return (
+  //     <Box
+  //       display="flex"
+  //       height="100vh"
+  //       alignItems="center"
+  //       justifyContent="center"
+  //     >
+  //       <Button size="lg" colorScheme="teal" onClick={readFile}>
+  //         Select File
+  //       </Button>
+  //     </Box>
+  //   );
+  // }
 
   return (
     <Box p={5} position="relative">
